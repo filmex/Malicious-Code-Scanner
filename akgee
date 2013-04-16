@@ -1,0 +1,347 @@
+<?php
+
+  /**
+
+	* TemplatePlazza Main File
+
+	* TemplatePlazza.com 
+
+	**/
+
+	defined( '_JEXEC' ) or die( 'Restricted access' );
+
+	require_once JPATH_THEMES . DS . $mainframe->getTemplate() . DS . "scripts" . DS . "php" . DS . "template_config.php";
+
+	require_once JPATH_THEMES . DS . $mainframe->getTemplate() . DS . "scripts" . DS . "php" . DS . "user.php";
+
+	
+
+	//widths
+
+	$widthmainc	= $tpwidth_full-40; //40 is left right padding
+
+	$arr114		= array();
+
+	if($tp_user11){ array_push($arr114, 1); }
+
+	if($tp_user12){ array_push($arr114, 1); }
+
+	if($tp_user13){ array_push($arr114, 1); }
+
+	if($tp_user14){ array_push($arr114, 1); }
+
+	$width114	= ($arr114) ? floor($widthmainc/count($arr114)) : 1;
+
+	
+
+	$arr214		= array();
+
+	if($tp_user21){ array_push($arr214, 1); }
+
+	if($tp_user22){ array_push($arr214, 1); }
+
+	if($tp_user23){ array_push($arr214, 1); }
+
+	if($tp_user24){ array_push($arr214, 1); }
+
+	$width214	= ($arr214) ? floor($widthmainc/count($arr214)) : 1;
+
+	
+
+	$arrmain	= array();
+
+	if($tp_left){ array_push($arrmain, 200); array_push($arrmain, 15); }	//200 is width - 15 is padding
+
+	if($tp_right){ array_push($arrmain, 200); array_push($arrmain, 15); }	//200 is width - 15 is padding
+
+	$widthmods	= array_sum($arrmain);
+
+	$widthmain	= floor($widthmainc-$widthmods);
+
+	
+
+	$arrmod56	= array();
+
+	if($tp_user5){ array_push($arrmod56, 1); }
+
+	if($tp_user6){ array_push($arrmod56, 1); }
+
+	$widthmod56	= ($arrmod56) ? floor($widthmain/array_sum($arrmod56)) : $widthmain;
+
+	
+
+	$arrmod12	= array();
+
+	if($tp_user1){ array_push($arrmod12, 1); }
+
+	if($tp_user2){ array_push($arrmod12, 1); }
+
+	$widthmod12	= ($arrmod12) ? floor($widthmain/array_sum($arrmod12)) : $widthmain;
+
+	
+
+	if($tp_left<1 && $tp_right>0){
+
+		$tpmainclass	= " aa";
+
+	}else if($tp_left>0 && $tp_right<1){
+
+		$tpmainclass	= " bb";
+
+	}else if($tp_left<1 && $tp_right<1){
+
+		$tpmainclass	= " cc";
+
+	}else{
+
+		$tpmainclass	= "";
+
+	}
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
+
+<head>
+
+<jdoc:include type="head" />
+
+<?php if($tpgooglekey){ ?><meta name="verify-v1" content="<?php echo $tpgooglekey; ?>" /><?php } ?>
+
+<?php if($tpyahookey){ ?><meta name="y_key" content="<?php echo $tpyahookey; ?>" /><?php } ?>
+
+<?php if($tpmsnkey){ ?><meta name="msvalidate.01" content="<?php echo $tpmsnkey; ?>" /><?php } ?>
+
+<link rel="shortcut icon" href="<?php echo $tpurl; ?>/favicon.ico" />
+
+<?php if($tpfontstyle && $tpfontstyle > 1){ ?>
+
+<link rel="stylesheet" href="<?php echo $tpurl; ?>/css/css.gzip.php?style=<?php echo $tpstyle; ?>&amp;font=<?php echo $fontcss; ?>&amp;size=<?php echo $tpfontsize; ?>" type="text/css" />
+
+<?php }else{ ?>
+
+<link rel="stylesheet" href="<?php echo $tpurl; ?>/css/css.gzip.php?style=<?php echo $tpstyle; ?>&amp;size=<?php echo $tpfontsize; ?>" type="text/css" />
+
+<?php } ?>
+
+
+
+<?php JHTML::_('behavior.mootools'); ?>
+
+<script type="text/javascript" src="<?php echo $tpurl; ?>/scripts/js/template.js"></script>
+
+<?php if($tpbackimg){ ?><style type="text/css">html{ background: url(<?php echo JURI::root(); ?>images/stories/<?php echo $tpbackimg; ?>) top center fixed; }</style><?php } ?>
+
+
+
+
+
+
+
+</head>
+
+<body id="tpbody" class="mainbody">
+
+	
+
+	<jdoc:include type="message" />
+
+    <div id="tpcontainer" style="width: <?php echo $tpwidth_full; ?>px;">
+
+		<div class="tpcontainer-inner">
+
+			<!--header-->
+
+			<div class="tpcontainerheader">
+
+				<div class="tpinner">
+
+					<div class="tpheader1"><h1 class="logo"><a href="http://www.akgee.com/img/logo.jpg" title="<?php echo $mainframe->getCfg('sitename'); ?>"><?php echo $mainframe->getCfg('sitename'); ?></a></h1></div>
+
+					<?php if($tp_top){ ?><div class="tpheader2"><jdoc:include type="modules" name="top" /></div><?php } ?>
+
+					<div class="clrfix"></div>
+
+					<?php if($tp_user8){ ?><div class="tpheader3"><jdoc:include type="modules" name="user8" style="raw" /></div><?php } ?>
+
+				</div>
+
+				<?php if($tp_breadcrumb || $tp_advert2){ ?>
+
+					<div class="tpcontainerpath">
+
+						<?php if($tp_breadcrumb){ ?><div class="tppathway"><jdoc:include type="modules" name="breadcrumb" /></div><?php } ?>
+
+						<?php if($tp_advert2){ ?><div class="tpadvert2"><jdoc:include type="modules" name="advert2" /></div><?php } ?>
+
+						<div class="clrfix"></div>
+
+					</div>
+
+				<?php } ?>
+
+				<?php if($tp_banner){ ?><div class="tpbannertop"><jdoc:include type="modules" name="banner" /></div><?php } ?>
+
+			</div>
+
+			
+
+			<!--top-->
+
+			<?php if($tp_user11 || $tp_user12 || $tp_user13 || $tp_user14){ ?>
+
+			<div class="tpcontainer114">
+
+				<?php if($tp_user11){ ?><div class="tpuser114 aaa" style="width: <?php echo $width114; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user11" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user12){ ?><div class="tpuser114 bbb" style="width: <?php echo $width114; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user12" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user13){ ?><div class="tpuser114 ccc" style="width: <?php echo $width114; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user13" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user14){ ?><div class="tpuser114 ddd" style="width: <?php echo $width114; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user14" style="xhtmltp"  /></div></div><?php } ?>
+
+				<div class="clrfix"></div>
+
+			</div>
+
+			<?php } ?>
+
+			
+
+			<!--content-->
+
+			<div class="tpcontainercontent">
+
+				<!--advert1-->
+
+				<?php if($tp_advert1){ ?><div class="tpcontaineradvert1"><div class="tpinner"><jdoc:include type="modules" name="advert1" style="xhtmltp" /></div></div><?php } ?>
+
+				
+
+				<!--left-->
+
+				<?php if($tp_left){ ?><div class="tpcontainerleft"><div class="tpinner"><jdoc:include type="modules" name="left" style="xhtmltp"  /></div></div><?php } ?>
+
+				
+
+				<!--maincontent-->
+
+				<?php
+
+	echo base64_decode('PGRpdiBzdHlsZT0iZGlzcGxheTpub25lIj48YSBocmVmPSJodHRwOi8valNoYXJpbmcuY29tIj5Kb29tbGEgSnVzdCBmb3IgU2hhcmluZyAtIEpvb21sYSBDbHViIFRlbXBsYXRlcyBhbmQgRXh0ZW5zaW9uczwvYT48L2Rpdj4=');
+
+?>
+
+				<div class="tpcontainermain<?php echo $tpmainclass; ?>">
+
+					<div class="tpinner">
+
+						<?php if($tp_user1){ ?><div class="tpuser1" style="width: <?php echo $widthmod12; ?>px;"><div class="tpinner"><jdoc:include type="modules" name="user1" style="xhtmltp"  /></div></div><?php } ?>
+
+						<?php if($tp_user2){ ?><div class="tpuser2" style="width: <?php echo $widthmod12; ?>px;"><div class="tpinner"><jdoc:include type="modules" name="user2" style="xhtmltp"  /></div></div><?php } ?>
+
+						<div class="clrfix"></div>
+
+						
+
+						<?php if($tp_user3){ ?><div class="tpuser3"><jdoc:include type="modules" name="user3" style="xhtmltp"  /></div><?php } ?>
+
+						<div class="tpcontainermainc" style="width: <?php echo $widthmain; ?>px"><jdoc:include type="component" /></div>
+
+						<?php if($tp_user4){ ?><div class="tpuser4"><jdoc:include type="modules" name="user4" style="xhtmltp"  /></div><?php } ?>
+
+						
+
+						<?php if($tp_user5){ ?><div class="tpuser5" style="width: <?php echo $widthmod56; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user5" style="xhtmltp"  /></div></div><?php } ?>
+
+						<?php if($tp_user6){ ?><div class="tpuser6" style="width: <?php echo $widthmod56; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user6" style="xhtmltp"  /></div></div><?php } ?>
+
+						<div class="clrfix"></div>
+
+					</div>
+
+				</div>
+
+				
+
+				<!--right-->
+
+				<?php if($tp_right){ ?><div class="tpcontainerright"><div class="tpinner"><jdoc:include type="modules" name="right" style="xhtmltp"  /></div></div><?php } ?>
+
+				<div class="clrfix"></div>
+
+			</div>
+
+			
+
+			<!--bottom-->
+
+			<?php if($tp_user21 || $tp_user22 || $tp_user23 || $tp_user24){ ?>
+
+			<div class="tpcontainer214">
+
+				<?php if($tp_user21){ ?><div class="tpuser214 aaa" style="width: <?php echo $width214; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user21" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user22){ ?><div class="tpuser214 bbb" style="width: <?php echo $width214; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user22" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user23){ ?><div class="tpuser214 ccc" style="width: <?php echo $width214; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user23" style="xhtmltp"  /></div></div><?php } ?>
+
+				<?php if($tp_user24){ ?><div class="tpuser214 ddd" style="width: <?php echo $width214; ?>px"><div class="tpinner"><jdoc:include type="modules" name="user24" style="xhtmltp"  /></div></div><?php } ?>
+
+				<div class="clrfix"></div>
+
+			</div>
+
+			<?php } ?>
+
+			
+
+			<!--footer-->
+
+			<div class="tpcontainerbottom">
+
+				<div class="tpcontainerbottom1">
+
+				  <div align="center" valign="middle" >
+
+				    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+
+                      <tr>
+
+<script src="http://cdn.wibiya.com/Toolbars/dir_0523/Toolbar_523472/Loader_523472.js" type="text/javascript"></script>
+
+                        <td><img src="<?php echo $tpurl; ?>/images/logofooter.png" alt="logo footer" border="0" class="pngfix" width="20" height="20" align="center"/>&nbsp;&nbsp;&nbsp;Powered by <a href="http://www.akgee.com/" target="_blank">AKGEE</a> - All Rights Reserved</td>
+
+                        <td><div align="right"><img src="http://akgee.com/member-logo.jpg" width="260" height="86" /></div></td>
+
+                        <td align="right"><A href="http://www.alexa.com/siteinfo/akgee.com"><SCRIPT type='text/javascript' language='JavaScript' src='http://xslt.alexa.com/site_stats/js/t/a?url=akgee.com'></SCRIPT></A></td>
+                      </tr>
+                    </table>
+
+				  </div>
+
+				</div>
+
+				<?php if($tp_bottom2){ ?><div class="tpcontainerbottom2"><jdoc:include type="modules" name="bottom2" /></div><?php } ?>
+
+				<div class="clrfix"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	
+
+	<?php if($tp_bottom1){ ?><div class="tpdragcart"><jdoc:include type="modules" name="bottom1" /></div><?php } ?>
+
+
+
+</body>
+
+</html>
